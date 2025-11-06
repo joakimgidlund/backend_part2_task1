@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Books by genre</title>
+</head>
+<body>
+    <h1 th:if="${booksByGenre.keySet().size() == 1}">Here's our books in <span th:text="${booksByGenre.keySet().toArray()[0].toLowerCase()}"></span></h1>
+    <h1 th:unless="${booksByGenre.keySet().size() == 1}">Here's our books by genre</h1>
+    <ul>
+        <li th:each="genre : ${booksByGenre.keySet()}">
+            <a th:href="@{/genre(type=${genre.toLowerCase()})}"><span th:text="${genre}"></span></a>
+            <ul>
+                <li th:each="book : ${booksByGenre.get(genre)}">
+                    <span th:text="${book.title}"></span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <a th:if="${booksByGenre.keySet().size() == 1}" th:href="@{/genre}">Back to full list</a>
+</body>
+</html>

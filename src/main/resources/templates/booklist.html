@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Book list</title>
+</head>
+<body>
+    <h1>Here are our current books</h1>
+    <ul>
+        <li th:each="book : ${books}">
+            <span th:text="${book.title}"></span> by <span th:text="${book.author}"></span>
+        </li>
+    </ul>
+</body>
+</html>
